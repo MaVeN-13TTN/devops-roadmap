@@ -2,7 +2,7 @@
 
 A modern, interactive web application to track your progress in learning DevOps skills and technologies. Built with pure vanilla JavaScript, HTML, and CSS - no frameworks, no dependencies. Features a beautiful glassmorphism design and smooth animations, all achieved with native web technologies.
 
-This project serves as a visual progress tracker for the comprehensive DevOps roadmap available at [DevOps-Roadmap](https://github.com/milanm/DevOps-Roadmap/tree/master). It helps you track your learning journey through the topics and resources outlined in the original repository.
+This project serves as a visual progress tracker for the comprehensive DevOps roadmap available at [DevOps-Roadmap](https://github.com/milanm/DevOps-Roadmap/tree/master) and [DevOps Learning Path](https://github.com/MaVeN-13TTN/devops-roadmap). It helps you track your learning journey through the topics and resources outlined in these curated repositories.
 
 ## Tech Stack
 
