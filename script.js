@@ -265,10 +265,10 @@ class ProgressTracker {
         this.modal = document.getElementById('resource-modal');
         this.themeToggleBtn = document.getElementById('theme-toggle-btn');
         
-        // Always initialize with light theme
-        this.currentTheme = 'light';
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
+        // Initialize theme from localStorage or default to light
+        const savedTheme = localStorage.getItem('theme');
+        this.currentTheme = savedTheme || 'light';
+        document.documentElement.setAttribute('data-theme', this.currentTheme);
         
         // Setup event listeners
         this.setupEventListeners();
@@ -496,18 +496,27 @@ class ProgressTracker {
     }
 
     toggleTopicCompletion(topicId, completed) {
-        if (!this.progress[topicId]) {
-            this.progress[topicId] = {
-                completed: false,
-                subtopics: new Array(roadmapData.find(t => t.id === topicId).subtopics.length).fill(false)
-            };
-        }
-        this.progress[topicId].completed = completed;
+        const topic = this.progress[topicId] || { subtopics: [] };
+        topic.completed = completed;
+        
+        // If marking as complete, fill all subtopics
         if (completed) {
-            this.progress[topicId].subtopics.fill(true);
+            const topicData = roadmapData.find(t => t.id === topicId);
+            topic.subtopics = new Array(topicData.subtopics.length).fill(true);
+            
+            // Get button position for confetti
+            const button = document.querySelector(`[data-topic="${topicId}"] .mark-complete-btn`);
+            if (button) {
+                const rect = button.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                confetti.shoot(x, y);
+            }
         }
+        
+        this.progress[topicId] = topic;
         this.saveProgress();
-        this.renderTopics(document.querySelector('.filter-btn.active').dataset.filter);
+        this.renderTopics();
         this.updateOverallProgress();
     }
 
@@ -524,7 +533,7 @@ class ProgressTracker {
         this.progress[topicId].completed = this.progress[topicId].subtopics.every(Boolean);
         
         this.saveProgress();
-        this.renderTopics(document.querySelector('.filter-btn.active').dataset.filter);
+        this.renderTopics();
         this.updateOverallProgress();
     }
 }
