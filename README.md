@@ -42,7 +42,7 @@ This project serves as a visual progress tracker for the comprehensive DevOps ro
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/devops-roadmap.git
+   git clone https://github.com/MaVeN-13TTN/devops-roadmap
    ```
 
 2. Open your browser and navigate to the cloned repository
