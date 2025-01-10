@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Roadmap</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>DevOps Roadmap Progress Tracker</h1>
+            <p>Track your journey to becoming a DevOps engineer</p>
+        </header>
+
+        <main>
+            <div class="progress-overview">
+                <h2>Overall Progress</h2>
+                <div class="progress-info">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="overall-progress"></div>
+                    </div>
+                    <span class="progress-text" id="overall-progress-text">0%</span>
+                </div>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="in-progress">In Progress</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search topics...">
+            </div>
+
+            <div class="topics-container">
+                <!-- Topics will be dynamically added here -->
+            </div>
+        </main>
+
+        <footer>
+            <p>Based on the <a href="https://github.com/milanm/DevOps-Roadmap" target="_blank">DevOps Roadmap 2024</a></p>
+        </footer>
+    </div>
+
+    <!-- Modal for detailed resource view -->
+    <div class="modal" id="resource-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
